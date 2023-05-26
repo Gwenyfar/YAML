@@ -1,0 +1,48 @@
+
+Person: &person
+ First Name:
+ Last Name:
+ Description: I'm alive
+
+
+School:
+  Teachers:
+   - Trinity: &teacher1
+     <<: *person
+     First Name: Itabong
+     Last Name: Ikpe
+   - Murphy: &teacher2
+     <<: *person
+     First Name: Murphy
+     Last Name: Ochuba
+
+  Students: 
+    - Adeola: &student1
+       <<: *person
+       First Name: Adeola
+       Last Name: Aderibigbe
+       Mat No: U2001/3030005
+    - Iruoma: &student2
+       <<: *person
+       First Name: Iruoma
+       Last Name: Onyia
+       Mat No: U2015/3030010
+
+  Classrooms: 
+    - Class1:
+        Subject: Physics
+        Teacher: *teacher1
+        Students:
+          - <<: *student1
+          - <<: *student2
+    - Class2:
+        Subject: Chemistry
+        Teacher: *teacher2
+        Students: 
+          - <<: *student2
+          - <<: *student1
+  
+
+
+
+ 
