@@ -21,7 +21,11 @@ Staff: &staff
 Patient: &patient
   <<: *person
   Patient Id: !!int
-      
+
+Drugs: !!seq
+- &drug1 Panadol
+- &drug2 Artemium
+
 Hospital: 
   Name: *hospital
   Receptionist:
@@ -36,9 +40,18 @@ Hospital:
   Doctors: !!omap
    - Doctor 1: 
       <<: *staff
-      First Name: Oluchi
+      First Name: *doctor1 Oluchi
       Last Name: Onyia
       Department: Paediatrics
+      Appointments:
+      - Appointment 1:
+          Hospital: *hospital
+          Doctor: *doctor1
+          Patient: *patient1
+          Prescription: Head ache
+          Drugs:
+          - *drug1
+          - *drug2
    - Doctor 2: 
       <<: *staff
       First Name: Joognki
@@ -65,7 +78,7 @@ Hospital:
   Patients: !!omap 
    - Patient 1: 
       <<: *patient
-      First Name: Camila
+      First Name: &patient1 Camila
       Last Name: Cabello
       Patient Id: 1
    - Patient 2: 
