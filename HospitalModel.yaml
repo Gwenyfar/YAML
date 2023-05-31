@@ -1,0 +1,75 @@
+//Hospital
+//Name
+//Doctors
+//Nurses
+//Pharmacists
+//Receptionist
+//Accountant
+//Patients 
+
+Hospital Name: &hospital St. Catherine's Clinic
+
+Person: &person
+  First Name:
+  Last Name:
+  Hospital: *hospital
+
+Staff: &staff
+  <<: *person
+  Department: General
+
+Patient: &patient
+  <<: *person
+  Patient Id: !!int
+      
+Hospital: 
+  Name: *hospital
+  Receptionist:
+    <<: *staff
+    First Name: Hyeko
+    Last Name: Song
+  Accountant: 
+    <<: *staff
+    First Name: Jenny
+    Last Name: Park
+    Department: Finance
+  Doctors: !!omap
+   - Doctor 1: 
+      <<: *staff
+      First Name: Oluchi
+      Last Name: Onyia
+      Department: Paediatrics
+   - Doctor 2: 
+      <<: *staff
+      First Name: Joognki
+      Last Name: Song
+  Nurses: !!omap 
+   - Nurse 1: 
+      <<: *staff
+      First Name: Jennie
+      Last Name: Kim
+   - Nurse 2: 
+      <<: *staff
+      First Name: Nana
+      Last Name: Song
+      Department: Obstetrics
+  Pharmacists: !!omap 
+   - Pharmacist 1: 
+      <<: *staff
+      First Name: Jennie
+      Last Name: Kim
+   - Pharmacist 2: 
+      <<: *staff
+      First Name: Nana
+      Last Name: Song
+  Patients: !!omap 
+   - Patient 1: 
+      <<: *patient
+      First Name: Camila
+      Last Name: Cabello
+      Patient Id: 1
+   - Patient 2: 
+      <<: *patient
+      First Name: Minho
+      Last Name: Lee
+      Patient Id: 2
