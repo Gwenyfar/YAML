@@ -1,4 +1,4 @@
-//Hospital
+//Hospital System Model
 //Name
 //Doctors
 //Nurses
@@ -6,6 +6,7 @@
 //Receptionist
 //Accountant
 //Patients 
+//Appointments
 
 Hospital Name: &hospital St. Catherine's Clinic
 
@@ -23,8 +24,12 @@ Patient: &patient
   Patient Id: !!int
 
 Drugs: !!seq
-- &drug1 Panadol
-- &drug2 Artemium
+- Drug 1: 
+    Name: &drug1 Panadol
+    Price: &drug1Price $10.00
+- Drug 2: 
+    Name: &drug2 Artemium
+    Price: &drug2Price $15.00
 
 Hospital: 
   Name: *hospital
@@ -40,22 +45,14 @@ Hospital:
   Doctors: !!omap
    - Doctor 1: 
       <<: *staff
-      First Name: *doctor1 Oluchi
+      First Name: &doctor1 Oluchi
       Last Name: Onyia
       Department: Paediatrics
-      Appointments:
-      - Appointment 1:
-          Hospital: *hospital
-          Doctor: *doctor1
-          Patient: *patient1
-          Prescription: Head ache
-          Drugs:
-          - *drug1
-          - *drug2
    - Doctor 2: 
       <<: *staff
       First Name: Joognki
       Last Name: Song
+      Appointments: null
   Nurses: !!omap 
    - Nurse 1: 
       <<: *staff
@@ -86,3 +83,12 @@ Hospital:
       First Name: Minho
       Last Name: Lee
       Patient Id: 2
+  Appointments:
+      - Appointment 1:
+          Hospital: *hospital
+          Doctor: *doctor1
+          Patient: *patient1
+          Prescription: Head ache
+          Drugs:
+          - *drug1
+          Bill: *drug1Price
